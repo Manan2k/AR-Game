@@ -1,21 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ShipController : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 3.5f;
-    public GameObject target; // Assign the target object in the inspector
-    private UnityEngine.AI.NavMeshAgent navMeshAgent;
+    public GameObject target;
 
-    private void Start()
+    [SerializeField]
+    private float speed = 3.5f; // This speed can be adjusted in the Inspector.
+    private NavMeshAgent navMeshAgent;
+
+    void Start()
     {
-        navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        navMeshAgent.speed = speed;
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.speed = speed; // Set the speed when the script starts.
     }
 
-    private void Update()
+    void Update()
     {
         if (target != null)
         {
@@ -23,5 +25,5 @@ public class ShipController : MonoBehaviour
         }
     }
 
-    // Other methods for handling AR interactions, like setting a new destination when tapping on a plane, etc.
+    // Additional logic...
 }
